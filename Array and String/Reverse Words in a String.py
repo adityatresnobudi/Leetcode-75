@@ -7,13 +7,4 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
-        return " ".join(s.split()[::-1])#split sentencce into word
-#print words backward
-
-class Solution(object):
-    def reverseWords(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
         return " ".join(s.split()[::-1])

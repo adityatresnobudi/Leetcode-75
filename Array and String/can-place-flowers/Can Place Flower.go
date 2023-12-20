@@ -1,32 +1,12 @@
 func canPlaceFlowers(flowerbed []int, n int) bool {
-    length := len(flowerbed)
-
-    for idx, flower := range flowerbed {
-        if length == 1 {
-            if flower == 0 {
-                flower = 1
-                n--
-                continue
-            }
-            break
-        }
-        
-        switch idx {
-        case 0:
-            if flowerbed[idx+1] == 0 && flowerbed[idx] == 0 {
-                flowerbed[idx] = 1
-                n--
-            }
-        case length-1:
-            if flowerbed[idx-1] == 0 && flowerbed[idx] == 0 {
-                flowerbed[idx] = 1
-                n--
-            }
-        default:
-            if flowerbed[idx-1] == 0 && flowerbed[idx+1] == 0 && flowerbed[idx] == 0 {
-                flowerbed[idx] = 1
-                n--
-            }
+    newFB := make([]int, len(flowerbed)+2)
+    newFB[0] = 0
+    newFB[len(newFB)-1] = 0
+    copy(newFB[1:len(newFB)-1], flowerbed)
+    for i := 1; i < len(newFB)-1; i++ {
+        if newFB[i] == 0 && newFB[i-1] == 0 && newFB[i+1] == 0 {
+            newFB[i] = 1
+            n--
         }
     }
 
